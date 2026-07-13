@@ -1,0 +1,25 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# .NET build çıktıları
+**/bin/
+**/obj/
+
+# React / Vite
+client/node_modules/
+client/dist/
+
+# Environment ve secret dosyaları
+client/.env
+client/.env.*
+*.Development.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# İşletim sistemi
+.DS_Store
+Thumbs.db
