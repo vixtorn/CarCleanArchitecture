@@ -6,3 +6,15 @@ client/dist/
 *.user 
 *.suo 
 *.log 
+.env
+.env.*
+!.env.example
+client/.env
+client/.env.*
+!client/.env.example
+secrets.json
+*.pfx
+*.p12
+*.key
+*.pem
+coverage/
