@@ -1,158 +1,56 @@
 import { useState, type FormEvent } from "react";
-import { createCar } from "../services/carApi";
+import carPlaceholder from "../assets/car-placeholder.png";
+import type { Car } from "../types/car";
 import type { CreateCarRequest } from "../types/CreateCar";
+import Icon from "./Icon";
 
-export default function CreateCarForm() {
-  const [form, setForm] = useState<CreateCarRequest>({
-    brand: "",
-    model: "",
-    color: "",
-    year: 2020,
-    horsepower: 100,
-    doorCount: 4,
-  });
+type VehicleRequest = CreateCarRequest;
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [message, setMessage] = useState<string | null>(null);
+const emptyForm: VehicleRequest = { brand: "", model: "", color: "", year: 2020, horsepower: 100, doorCount: 4 };
+
+interface CreateCarFormProps {
+  car?: Car;
+  isSubmitting: boolean;
+  onSubmit: (request: VehicleRequest) => Promise<void>;
+}
+
+export default function CreateCarForm({ car, isSubmitting, onSubmit }: CreateCarFormProps) {
+  const [form, setForm] = useState<VehicleRequest>(() => car ? { brand: car.brand, model: car.model, color: car.color, year: car.year, horsepower: car.horsepower, doorCount: car.doorCount } : emptyForm);
+  const isEditing = Boolean(car);
+
+  function update<K extends keyof VehicleRequest>(key: K, value: VehicleRequest[K]) {
+    setForm((current) => ({ ...current, [key]: value }));
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    try {
-      setIsSubmitting(true);
-      setMessage(null);
-
-      await createCar(form);
-
-      setMessage("Araba başarıyla eklendi.");
-
-      setForm({
-        brand: "",
-        model: "",
-        color: "",
-        year: 2020,
-        horsepower: 100,
-        doorCount: 4,
-      });
-    } catch (error) {
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-          : "Araba eklenirken bir hata oluştu.";
-
-      setMessage(errorMessage);
-    } finally {
-      setIsSubmitting(false);
-    }
+    if (isSubmitting) return;
+    const request: VehicleRequest = {
+      brand: form.brand.trim(), model: form.model.trim(), color: form.color.trim(),
+      year: form.year, horsepower: form.horsepower, doorCount: form.doorCount,
+    };
+    await onSubmit(request);
   }
 
   return (
-    <section>
-      <h2>Add New Car</h2>
-
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="create-brand">Brand</label>
-          <input
-            id="create-brand"
-            type="text"
-            value={form.brand}
-            required
-            onChange={(event) =>
-              setForm({
-                ...form,
-                brand: event.target.value,
-              })
-            }
-          />
+    <form id="vehicle-form" className="vehicle-form" onSubmit={(event) => void handleSubmit(event)}>
+      <div className="form-preview">
+        <img src={carPlaceholder} alt={`${form.brand || "New"} ${form.model || "car"} vehicle placeholder`} />
+        <div><strong>{form.brand.trim() || "Your new vehicle"} {form.model.trim()}</strong><span>Inventory image preview</span></div>
+      </div>
+      <fieldset className="form-section"><legend><Icon name="car" size={18} /> Vehicle Identity</legend>
+        <label className="field"><span>Brand</span><input value={form.brand} onChange={(event) => update("brand", event.target.value)} placeholder="e.g. BMW" required maxLength={100} disabled={isSubmitting} /></label>
+        <label className="field"><span>Model</span><input value={form.model} onChange={(event) => update("model", event.target.value)} placeholder="e.g. M4 Competition" required maxLength={100} disabled={isSubmitting} /></label>
+        <label className="field"><span>Year</span><input type="number" value={form.year} onChange={(event) => update("year", event.target.valueAsNumber)} min="1886" max="2026" required disabled={isSubmitting} /></label>
+      </fieldset>
+      <fieldset className="form-section"><legend><Icon name="gauge" size={18} /> Specifications</legend>
+        <div className="form-two-columns">
+          <label className="field"><span>Exterior Color</span><input value={form.color} onChange={(event) => update("color", event.target.value)} placeholder="e.g. Midnight Black" required maxLength={50} disabled={isSubmitting} /></label>
+          <label className="field"><span>Door Count</span><select value={form.doorCount} onChange={(event) => update("doorCount", Number(event.target.value))} required disabled={isSubmitting}>{[2,3,4,5].map((count) => <option value={count} key={count}>{count} doors</option>)}</select></label>
         </div>
-
-        <div>
-          <label htmlFor="create-model">Model</label>
-          <input
-            id="create-model"
-            type="text"
-            value={form.model}
-            required
-            onChange={(event) =>
-              setForm({
-                ...form,
-                model: event.target.value,
-              })
-            }
-          />
-        </div>
-
-        <div>
-          <label htmlFor="create-color">Color</label>
-          <input
-            id="create-color"
-            type="text"
-            value={form.color}
-            required
-            onChange={(event) =>
-              setForm({
-                ...form,
-                color: event.target.value,
-              })
-            }
-          />
-        </div>
-
-        <div>
-          <label htmlFor="create-year">Year</label>
-          <input
-            id="create-year"
-            type="number"
-            value={form.year}
-            required
-            onChange={(event) =>
-              setForm({
-                ...form,
-                year: Number(event.target.value),
-              })
-            }
-          />
-        </div>
-
-        <div>
-          <label htmlFor="create-horsepower">Horsepower</label>
-          <input
-            id="create-horsepower"
-            type="number"
-            value={form.horsepower}
-            required
-            onChange={(event) =>
-              setForm({
-                ...form,
-                horsepower: Number(event.target.value),
-              })
-            }
-          />
-        </div>
-
-        <div>
-          <label htmlFor="create-door-count">Door Count</label>
-          <input
-            id="create-door-count"
-            type="number"
-            value={form.doorCount}
-            required
-            onChange={(event) =>
-              setForm({
-                ...form,
-                doorCount: Number(event.target.value),
-              })
-            }
-          />
-        </div>
-
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Adding..." : "Add Car"}
-        </button>
-      </form>
-
-      {message && <p>{message}</p>}
-    </section>
+        <label className="field"><span>Horsepower (HP)</span><input type="number" value={form.horsepower} onChange={(event) => update("horsepower", event.target.valueAsNumber)} min="1" max="3600" required disabled={isSubmitting} /></label>
+      </fieldset>
+      <div className="form-note"><Icon name="info" /><p>{isEditing ? "Saving will update this vehicle in the live inventory." : "Adding this car will immediately update the live inventory."}</p></div>
+    </form>
   );
 }
