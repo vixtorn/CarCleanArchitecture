@@ -1,0 +1,1039 @@
+<!-- Design System -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Car Inventory Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#005226",
+                        "on-surface": "#121c2a",
+                        "surface-container-highest": "#d9e3f6",
+                        "outline-variant": "#bfc9bd",
+                        "on-secondary-container": "#55695c",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#dee9fc",
+                        "on-tertiary-fixed-variant": "#125129",
+                        "on-primary-fixed": "#00210c",
+                        "background": "#f8f9ff",
+                        "on-secondary-fixed-variant": "#384b3f",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-tint": "#116d37",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-primary": "#84d998",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#d9e3f6",
+                        "secondary-fixed": "#d2e8d8",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#65b87a",
+                        "on-primary-container": "#004620",
+                        "on-background": "#121c2a",
+                        "surface": "#f8f9ff",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#b6ccbd",
+                        "surface-container": "#e6eeff",
+                        "inverse-surface": "#27313f",
+                        "surface-dim": "#d0dbed",
+                        "on-surface-variant": "#3f4940",
+                        "on-tertiary-container": "#014720",
+                        "on-tertiary-fixed": "#00210b",
+                        "primary": "#116d37",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "secondary": "#4f6357",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#0d1f16",
+                        "tertiary-fixed": "#b1f2bb",
+                        "tertiary": "#2e6a3f",
+                        "primary-fixed": "#a0f6b2",
+                        "primary-fixed-dim": "#84d998",
+                        "tertiary-fixed-dim": "#96d5a1",
+                        "secondary-container": "#d2e8d8",
+                        "outline": "#6f7a6f",
+                        "tertiary-container": "#77b583"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "48px",
+                        "container-max": "1440px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "margin-desktop": "32px",
+                        "gutter": "24px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Geist"],
+                        "headline-sm": ["Geist"],
+                        "display": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Geist"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #F4FAF5;
+            color: #121c2a;
+        }
+        
+        .shadow-ambient-sm {
+            box-shadow: 0px 2px 4px rgba(31, 41, 55, 0.04);
+        }
+        
+        .shadow-ambient-md {
+            box-shadow: 0px 10px 15px -3px rgba(31, 41, 55, 0.08);
+        }
+
+        .border-soft {
+            border-color: #DCE8DF;
+        }
+        
+        .input-focus-ring:focus {
+            border-color: #65B87A;
+            box-shadow: 0 0 0 3px rgba(101, 184, 122, 0.2);
+            outline: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-xl">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim shadow-sm border-b border-outline-variant dark:border-outline">
+<div class="flex justify-between items-center px-margin-desktop h-16 max-w-container-max mx-auto">
+<!-- Brand -->
+<div class="flex flex-col">
+<div class="font-headline-md text-headline-md text-primary dark:text-primary-fixed flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+                    Car Inventory
+                </div>
+<div class="hidden md:block font-label-sm text-label-sm text-on-surface-variant dark:text-on-secondary-container">
+                    Manage, filter, add, update, and remove vehicles from your inventory
+                </div>
+</div>
+<!-- Main Navigation (Desktop) -->
+<div class="hidden md:flex h-full items-center gap-lg">
+<a class="h-full flex items-center text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1 active:scale-95 transition-transform hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors duration-150 font-body-md text-body-md px-2" href="#">Dashboard</a>
+<a class="h-full flex items-center text-secondary dark:text-secondary-fixed-dim active:scale-95 transition-transform hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors duration-150 font-body-md text-body-md px-2" href="#">Inventory</a>
+<a class="h-full flex items-center text-secondary dark:text-secondary-fixed-dim active:scale-95 transition-transform hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors duration-150 font-body-md text-body-md px-2" href="#">Sales</a>
+<a class="h-full flex items-center text-secondary dark:text-secondary-fixed-dim active:scale-95 transition-transform hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors duration-150 font-body-md text-body-md px-2" href="#">Analytics</a>
+<a class="h-full flex items-center text-secondary dark:text-secondary-fixed-dim active:scale-95 transition-transform hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors duration-150 font-body-md text-body-md px-2" href="#">Settings</a>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-md">
+<div class="hidden md:flex gap-sm">
+<button class="p-2 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container dark:hover:bg-surface-container-highest rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container dark:hover:bg-surface-container-highest rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+<button class="bg-[#65B87A] hover:bg-[#54a468] text-white font-label-md text-label-md px-4 py-2 rounded transition-colors duration-150 ease-in-out active:scale-95 shadow-ambient-sm flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+                    Add New Car
+                </button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto space-y-lg">
+<!-- Summary Section (Stat Cards) -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<!-- Stat Card 1 -->
+<div class="bg-surface-container-lowest border border-soft shadow-ambient-sm rounded-lg p-md flex flex-col justify-between h-24">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Cars</div>
+<div class="flex items-end justify-between">
+<div class="font-headline-md text-headline-md text-on-surface">124</div>
+<span class="material-symbols-outlined text-primary-container" style="font-size: 20px;">directions_car</span>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-surface-container-lowest border border-soft shadow-ambient-sm rounded-lg p-md flex flex-col justify-between h-24">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Brands</div>
+<div class="flex items-end justify-between">
+<div class="font-headline-md text-headline-md text-on-surface">12</div>
+<span class="material-symbols-outlined text-primary-container" style="font-size: 20px;">sell</span>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-surface-container-lowest border border-soft shadow-ambient-sm rounded-lg p-md flex flex-col justify-between h-24">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Avg HP</div>
+<div class="flex items-end justify-between">
+<div class="font-headline-md text-headline-md text-on-surface">312 <span class="font-body-sm text-body-sm text-on-surface-variant ml-1">HP</span></div>
+<span class="material-symbols-outlined text-primary-container" style="font-size: 20px;">speed</span>
+</div>
+</div>
+<!-- Stat Card 4 -->
+<div class="bg-surface-container-lowest border border-soft shadow-ambient-sm rounded-lg p-md flex flex-col justify-between h-24">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Newest Model</div>
+<div class="flex items-end justify-between">
+<div class="font-headline-md text-headline-md text-on-surface">2024</div>
+<span class="material-symbols-outlined text-primary-container" style="font-size: 20px;">event</span>
+</div>
+</div>
+</section>
+<!-- Filtering Section -->
+<section class="bg-surface-container-lowest border border-soft shadow-ambient-sm rounded-lg p-md">
+<div class="flex items-center gap-2 mb-md text-on-surface">
+<span class="material-symbols-outlined" style="font-size: 20px;">filter_list</span>
+<h2 class="font-headline-sm text-headline-sm">Filters</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Brand Filter -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Brand</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" style="font-size: 16px;">search</span>
+<input class="w-full pl-8 pr-3 py-2 bg-surface-container-lowest border border-soft rounded-lg font-body-sm text-body-sm text-on-surface input-focus-ring placeholder:text-outline-variant transition-shadow duration-150" placeholder="Search brand..." type="text"/>
+</div>
+</div>
+<!-- Model Filter -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Model</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" style="font-size: 16px;">search</span>
+<input class="w-full pl-8 pr-3 py-2 bg-surface-container-lowest border border-soft rounded-lg font-body-sm text-body-sm text-on-surface input-focus-ring placeholder:text-outline-variant transition-shadow duration-150" placeholder="Search model..." type="text"/>
+</div>
+</div>
+<!-- Color Filter -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Color</label>
+<select class="w-full px-3 py-2 bg-surface-container-lowest border border-soft rounded-lg font-body-sm text-body-sm text-on-surface input-focus-ring transition-shadow duration-150 appearance-none">
+<option value="">Any Color</option>
+<option value="black">Black</option>
+<option value="white">White</option>
+<option value="silver">Silver</option>
+<option value="red">Red</option>
+<option value="blue">Blue</option>
+</select>
+</div>
+<!-- Year Range Filter -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Year Range</label>
+<div class="flex items-center gap-2">
+<input class="w-full px-3 py-2 bg-surface-container-lowest border border-soft rounded-lg font-body-sm text-body-sm text-on-surface input-focus-ring transition-shadow duration-150" placeholder="Min" type="number"/>
+<span class="text-on-surface-variant">-</span>
+<input class="w-full px-3 py-2 bg-surface-container-lowest border border-soft rounded-lg font-body-sm text-body-sm text-on-surface input-focus-ring transition-shadow duration-150" placeholder="Max" type="number"/>
+</div>
+</div>
+<!-- HP Range Filter -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">HP Range</label>
+<div class="flex items-center gap-2">
+<input class="w-full px-3 py-2 bg-surface-container-lowest border border-soft rounded-lg font-body-sm text-body-sm text-on-surface input-focus-ring transition-shadow duration-150" placeholder="Min" type="number"/>
+<span class="text-on-surface-variant">-</span>
+<input class="w-full px-3 py-2 bg-surface-container-lowest border border-soft rounded-lg font-body-sm text-body-sm text-on-surface input-focus-ring transition-shadow duration-150" placeholder="Max" type="number"/>
+</div>
+</div>
+<!-- Sort Filter -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Sort By</label>
+<select class="w-full px-3 py-2 bg-surface-container-lowest border border-soft rounded-lg font-body-sm text-body-sm text-on-surface input-focus-ring transition-shadow duration-150 appearance-none">
+<option value="newest">Newest Added</option>
+<option value="year_desc">Year (New to Old)</option>
+<option value="year_asc">Year (Old to New)</option>
+<option value="hp_desc">Horsepower (High to Low)</option>
+<option value="brand_asc">Brand (A-Z)</option>
+</select>
+</div>
+</div>
+<!-- Filter Actions -->
+<div class="flex justify-end gap-sm mt-md pt-md border-t border-soft">
+<button class="bg-transparent hover:bg-surface-container text-on-surface-variant font-label-md text-label-md px-4 py-2 rounded transition-colors duration-150">
+                    Reset
+                </button>
+<button class="bg-[#DDF3E3] hover:bg-[#c9e8d1] text-[#2F6B40] font-label-md text-label-md px-4 py-2 rounded transition-colors duration-150">
+                    Apply Filters
+                </button>
+</div>
+</section>
+<!-- Car Table Section -->
+<section class="space-y-sm">
+<div class="flex justify-between items-end">
+<div class="font-body-md text-body-md text-on-surface-variant">
+<span class="font-bold text-on-surface">29</span> cars found
+                </div>
+</div>
+<div class="bg-surface-container-lowest border border-soft shadow-ambient-sm rounded-lg overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-[#F4FAF5] border-b border-soft sticky top-0 z-10">
+<tr>
+<th class="py-3 px-4 font-label-sm text-label-sm text-outline uppercase tracking-wider whitespace-nowrap">Brand</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-outline uppercase tracking-wider whitespace-nowrap">Model</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-outline uppercase tracking-wider whitespace-nowrap">Color</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-outline uppercase tracking-wider whitespace-nowrap">Year</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-outline uppercase tracking-wider whitespace-nowrap">Horsepower</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-outline uppercase tracking-wider whitespace-nowrap">Doors</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-outline uppercase tracking-wider whitespace-nowrap text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-soft">
+<!-- Row 1 -->
+<tr class="hover:bg-[#F4FAF5] transition-colors duration-150 group">
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface font-medium whitespace-nowrap">Porsche</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface whitespace-nowrap">911 GT3 RS</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 border border-gray-200">
+<span class="w-2 h-2 rounded-full bg-gray-400"></span> Silver
+                                    </span>
+</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface whitespace-nowrap">2023</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-50 text-red-700 border border-red-100">
+                                        518 HP
+                                    </span>
+</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface whitespace-nowrap">2</td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" title="View">
+<span class="material-symbols-outlined" style="font-size: 18px;">visibility</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" title="Edit">
+<span class="material-symbols-outlined" style="font-size: 18px;">edit</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-error hover:bg-error-container rounded transition-colors" title="Delete">
+<span class="material-symbols-outlined" style="font-size: 18px;">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-[#F4FAF5] transition-colors duration-150 group">
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface font-medium whitespace-nowrap">BMW</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface whitespace-nowrap">M3 Competition</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-800 border border-blue-100">
+<span class="w-2 h-2 rounded-full bg-blue-600"></span> Isle of Man Green
+                                    </span>
+</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface whitespace-nowrap">2024</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-50 text-red-700 border border-red-100">
+                                        503 HP
+                                    </span>
+</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface whitespace-nowrap">4</td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" title="View">
+<span class="material-symbols-outlined" style="font-size: 18px;">visibility</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" title="Edit">
+<span class="material-symbols-outlined" style="font-size: 18px;">edit</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-error hover:bg-error-container rounded transition-colors" title="Delete">
+<span class="material-symbols-outlined" style="font-size: 18px;">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-[#F4FAF5] transition-colors duration-150 group">
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface font-medium whitespace-nowrap">Audi</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface whitespace-nowrap">RS6 Avant</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 border border-gray-200">
+<span class="w-2 h-2 rounded-full bg-black"></span> Mythos Black
+                                    </span>
+</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface whitespace-nowrap">2022</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-50 text-red-700 border border-red-100">
+                                        591 HP
+                                    </span>
+</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface whitespace-nowrap">5</td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" title="View">
+<span class="material-symbols-outlined" style="font-size: 18px;">visibility</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" title="Edit">
+<span class="material-symbols-outlined" style="font-size: 18px;">edit</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-error hover:bg-error-container rounded transition-colors" title="Delete">
+<span class="material-symbols-outlined" style="font-size: 18px;">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-[#F4FAF5] transition-colors duration-150 group">
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface font-medium whitespace-nowrap">Mercedes-Benz</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface whitespace-nowrap">AMG GT 63 S</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium bg-yellow-50 text-yellow-800 border border-yellow-100">
+<span class="w-2 h-2 rounded-full bg-yellow-500"></span> Solarbeam Yellow
+                                    </span>
+</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface whitespace-nowrap">2023</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-50 text-red-700 border border-red-100">
+                                        630 HP
+                                    </span>
+</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface whitespace-nowrap">4</td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" title="View">
+<span class="material-symbols-outlined" style="font-size: 18px;">visibility</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors" title="Edit">
+<span class="material-symbols-outlined" style="font-size: 18px;">edit</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-error hover:bg-error-container rounded transition-colors" title="Delete">
+<span class="material-symbols-outlined" style="font-size: 18px;">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination (Footer) -->
+<div class="px-4 py-3 border-t border-soft bg-surface-container-lowest flex items-center justify-between">
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+                        Showing <span class="font-medium text-on-surface">1</span> to <span class="font-medium text-on-surface">4</span> of <span class="font-medium text-on-surface">29</span> results
+                    </div>
+<div class="flex gap-1">
+<button class="p-1.5 rounded border border-soft text-outline hover:bg-surface-container disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined" style="font-size: 18px;">chevron_left</span>
+</button>
+<button class="p-1.5 rounded border border-soft text-on-surface hover:bg-surface-container bg-surface-container-low">1</button>
+<button class="p-1.5 rounded border border-soft text-on-surface hover:bg-surface-container">2</button>
+<button class="p-1.5 rounded border border-soft text-on-surface hover:bg-surface-container">3</button>
+<span class="p-1.5 text-on-surface-variant">...</span>
+<button class="p-1.5 rounded border border-soft text-on-surface hover:bg-surface-container">8</button>
+<button class="p-1.5 rounded border border-soft text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined" style="font-size: 18px;">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Empty State Example (Hidden by default, shown here for structure reference) -->
+<!-- 
+            <div class="hidden bg-surface-container-lowest border border-soft shadow-ambient-sm rounded-lg p-xl flex flex-col items-center justify-center text-center">
+                <span class="material-symbols-outlined text-outline-variant mb-4" style="font-size: 48px;">search_off</span>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">No cars match your filters</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-md">Try adjusting your search criteria or clearing filters to see more results from your inventory.</p>
+                <button class="mt-lg bg-transparent border border-outline hover:bg-surface-container text-on-surface font-label-md text-label-md px-4 py-2 rounded transition-colors duration-150">
+                    Clear All Filters
+                </button>
+            </div>
+            -->
+</section>
+</main>
+</body></html>
+
+<!-- Car Inventory Dashboard -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Car Inventory - Add New Car</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-fixed-variant": "#005226",
+                        "on-surface": "#121c2a",
+                        "surface-container-highest": "#d9e3f6",
+                        "outline-variant": "#bfc9bd",
+                        "on-secondary-container": "#55695c",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#dee9fc",
+                        "on-tertiary-fixed-variant": "#125129",
+                        "on-primary-fixed": "#00210c",
+                        "background": "#f8f9ff",
+                        "on-secondary-fixed-variant": "#384b3f",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-tint": "#116d37",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-primary": "#84d998",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#d9e3f6",
+                        "secondary-fixed": "#d2e8d8",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#65b87a",
+                        "on-primary-container": "#004620",
+                        "on-background": "#121c2a",
+                        "surface": "#f8f9ff",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#b6ccbd",
+                        "surface-container": "#e6eeff",
+                        "inverse-surface": "#27313f",
+                        "surface-dim": "#d0dbed",
+                        "on-surface-variant": "#3f4940",
+                        "on-tertiary-container": "#014720",
+                        "on-tertiary-fixed": "#00210b",
+                        "primary": "#116d37",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "secondary": "#4f6357",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#0d1f16",
+                        "tertiary-fixed": "#b1f2bb",
+                        "tertiary": "#2e6a3f",
+                        "primary-fixed": "#a0f6b2",
+                        "primary-fixed-dim": "#84d998",
+                        "tertiary-fixed-dim": "#96d5a1",
+                        "secondary-container": "#d2e8d8",
+                        "outline": "#6f7a6f",
+                        "tertiary-container": "#77b583"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "xxl": "48px",
+                        "container-max": "1440px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "margin-desktop": "32px",
+                        "gutter": "24px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "sm": "8px"
+                    },
+                    fontFamily: {
+                        "label-sm": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Geist"],
+                        "headline-sm": ["Geist"],
+                        "display": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Geist"],
+                        "body-sm": ["Inter"]
+                    },
+                    fontSize: {
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    },
+                    boxShadow: {
+                        'ambient': '0px 2px 4px rgba(31, 41, 55, 0.04)',
+                        'drawer': '-4px 0px 15px -3px rgba(31, 41, 55, 0.08)'
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom scrollbar for drawer */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #bfc9bd; /* outline-variant */
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased overflow-hidden flex h-screen">
+<!-- JSON Component: SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface border-r border-outline-variant flex flex-col p-md gap-sm z-10 hidden md:flex">
+<!-- Header -->
+<div class="flex items-center gap-sm mb-lg px-sm pt-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">directions_car</span>
+</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-primary">AutoManager</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Downtown Branch</p>
+</div>
+</div>
+<!-- Primary CTA -->
+<button class="w-full bg-primary-container hover:bg-[#52a668] transition-colors duration-150 text-on-primary-container font-label-md text-label-md py-sm px-md rounded-lg flex items-center justify-center gap-sm mb-md shadow-ambient">
+<span class="material-symbols-outlined text-[20px]">add</span>
+            New Entry
+        </button>
+<!-- Navigation Tabs -->
+<nav class="flex-1 flex flex-col gap-xs">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-secondary-container transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                Overview
+            </a>
+<!-- Active State Navigation based on intent -->
+<a class="flex items-center gap-md px-md py-sm rounded-lg bg-primary-container text-on-primary-container transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px] fill">directions_car</span>
+                Inventory
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-secondary-container transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+                Shipments
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-secondary-container transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">assessment</span>
+                Reports
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-secondary-container transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+                Team
+            </a>
+</nav>
+<!-- Footer Tabs -->
+<div class="mt-auto border-t border-outline-variant pt-sm flex flex-col gap-xs">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-secondary-container transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+                Support
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-secondary-container transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col ml-0 md:ml-64 relative">
+<!-- JSON Component: TopNavBar -->
+<header class="bg-surface fixed top-0 w-full md:w-[calc(100%-16rem)] z-20 border-b border-outline-variant shadow-sm transition-transform">
+<div class="flex justify-between items-center px-margin-desktop h-16 max-w-container-max mx-auto">
+<!-- Search Bar (on_left) -->
+<div class="flex-1 flex items-center">
+<div class="relative w-full max-w-md hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full h-10 pl-10 pr-4 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-on-surface-variant" placeholder="Search inventory..." type="text"/>
+</div>
+</div>
+<!-- Navigation Links (Hidden on mobile context here, acting as top tabs) -->
+<nav class="hidden lg:flex items-center gap-lg">
+<a class="text-secondary hover:bg-surface-container transition-colors duration-150 py-1 font-body-md text-body-md" href="#">Dashboard</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">Inventory</a>
+<a class="text-secondary hover:bg-surface-container transition-colors duration-150 py-1 font-body-md text-body-md" href="#">Sales</a>
+<a class="text-secondary hover:bg-surface-container transition-colors duration-150 py-1 font-body-md text-body-md" href="#">Analytics</a>
+<a class="text-secondary hover:bg-surface-container transition-colors duration-150 py-1 font-body-md text-body-md" href="#">Settings</a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-md ml-lg">
+<div class="flex items-center gap-sm text-on-surface-variant">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors duration-150 active:scale-95 transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors duration-150 active:scale-95 transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+<button class="hidden md:flex bg-primary-container text-on-primary-container font-label-md text-label-md px-md py-sm rounded hover:bg-[#52a668] transition-colors duration-150 active:scale-95 transition-transform">
+                        Add New Car
+                    </button>
+</div>
+</div>
+</header>
+<!-- Dashboard Mock Content Background -->
+<div class="pt-24 px-margin-desktop pb-xl overflow-y-auto h-full w-full max-w-container-max mx-auto filter blur-[2px] opacity-70 pointer-events-none transition-all duration-300">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Vehicle Inventory</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage and track all dealership vehicles.</p>
+</div>
+</div>
+<!-- Skeleton Data Table area -->
+<div class="bg-surface border border-outline-variant rounded-xl shadow-ambient p-md h-[600px] flex flex-col">
+<div class="flex gap-4 border-b border-outline-variant pb-sm mb-md">
+<div class="h-6 w-32 bg-surface-container rounded animate-pulse"></div>
+<div class="h-6 w-24 bg-surface-container rounded animate-pulse"></div>
+<div class="h-6 w-24 bg-surface-container rounded animate-pulse"></div>
+<div class="h-6 w-48 bg-surface-container rounded animate-pulse"></div>
+</div>
+<div class="space-y-4 flex-1">
+<div class="h-12 w-full bg-surface-container-lowest border border-surface-container rounded animate-pulse"></div>
+<div class="h-12 w-full bg-surface-container-lowest border border-surface-container rounded animate-pulse"></div>
+<div class="h-12 w-full bg-surface-container-lowest border border-surface-container rounded animate-pulse"></div>
+<div class="h-12 w-full bg-surface-container-lowest border border-surface-container rounded animate-pulse"></div>
+<div class="h-12 w-full bg-surface-container-lowest border border-surface-container rounded animate-pulse"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Overlay Backdrop -->
+<div class="fixed inset-0 bg-inverse-surface/40 backdrop-blur-[2px] z-40 transition-opacity duration-300"></div>
+<!-- DRAWER: Add New Car -->
+<aside class="fixed right-0 top-0 h-screen w-full md:w-[480px] bg-surface shadow-drawer border-l border-outline-variant flex flex-col z-50 transform translate-x-0 transition-transform duration-300 ease-in-out">
+<!-- Drawer Header -->
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center bg-surface shrink-0">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Add New Car</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Enter vehicle details to add to inventory.</p>
+</div>
+<button class="p-2 -mr-2 rounded-full text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors duration-150 flex items-center justify-center">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Drawer Body (Scrollable Form) -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-lg bg-background">
+<form class="flex flex-col gap-lg">
+<!-- Section 1: Essential Identity -->
+<div class="bg-surface p-md rounded-xl border border-outline-variant shadow-ambient flex flex-col gap-md">
+<h3 class="font-label-md text-label-md text-on-surface border-b border-outline-variant pb-2 mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">directions_car</span>
+                        Vehicle Identity
+                    </h3>
+<!-- Field: Brand (Custom Dropdown visually) -->
+<div class="relative">
+<label class="block mb-xs font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="brand">Brand</label>
+<div class="relative">
+<select class="w-full h-10 pl-3 pr-10 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all font-body-sm text-body-sm appearance-none cursor-pointer" id="brand">
+<option disabled="" selected="" value="">Select Manufacturer</option>
+<option value="toyota">Toyota</option>
+<option value="honda">Honda</option>
+<option value="ford">Ford</option>
+<option value="bmw">BMW</option>
+<option value="mercedes">Mercedes-Benz</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Field: Model -->
+<div>
+<label class="block mb-xs font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="model">Model</label>
+<input class="w-full h-10 px-3 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all font-body-sm text-body-sm placeholder:text-outline" id="model" placeholder="e.g. Camry SE" type="text"/>
+</div>
+<!-- Field: Year (with Inline Validation Example) -->
+<div>
+<label class="block mb-xs font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="year">Year</label>
+<div class="relative">
+<input class="w-full h-10 pl-3 pr-10 border border-error rounded-lg bg-error-container/10 text-on-surface focus:outline-none focus:border-error focus:ring-4 focus:ring-error/20 transition-all font-body-sm text-body-sm" id="year" placeholder="YYYY" type="number" value="199"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-error text-[20px] pointer-events-none">error</span>
+</div>
+<p class="text-error font-body-sm text-body-sm mt-1 flex items-center gap-1">
+                            Year must be a valid 4-digit number.
+                        </p>
+</div>
+</div>
+<!-- Section 2: Specifications -->
+<div class="bg-surface p-md rounded-xl border border-outline-variant shadow-ambient flex flex-col gap-md">
+<h3 class="font-label-md text-label-md text-on-surface border-b border-outline-variant pb-2 mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">tune</span>
+                        Specifications
+                    </h3>
+<div class="grid grid-cols-2 gap-md">
+<!-- Field: Color (Text + Picker visual) -->
+<div class="col-span-2 sm:col-span-1">
+<label class="block mb-xs font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="color">Exterior Color</label>
+<div class="relative flex items-center">
+<!-- Simulated color swatch -->
+<div class="absolute left-2 w-5 h-5 rounded-full border border-outline-variant bg-[#1a1a1a] shadow-sm pointer-events-none"></div>
+<input class="w-full h-10 pl-9 pr-3 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all font-body-sm text-body-sm" id="color" type="text" value="Midnight Black"/>
+</div>
+</div>
+<!-- Field: Door Count -->
+<div class="col-span-2 sm:col-span-1">
+<label class="block mb-xs font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="doors">Door Count</label>
+<select class="w-full h-10 px-3 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all font-body-sm text-body-sm appearance-none cursor-pointer" id="doors">
+<option value="2">2 Doors</option>
+<option selected="" value="4">4 Doors</option>
+<option value="5">5 Doors</option>
+</select>
+</div>
+<!-- Field: Horsepower -->
+<div class="col-span-2">
+<label class="block mb-xs font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="hp">Horsepower (HP)</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px] pointer-events-none">speed</span>
+<input class="w-full h-10 pl-9 pr-3 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all font-body-sm text-body-sm placeholder:text-outline" id="hp" placeholder="e.g. 203" type="number"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Additional Info Area -->
+<div class="bg-surface-container-low p-md rounded-xl border border-dashed border-outline-variant flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Adding a new car will immediately update the live inventory. Make sure the VIN (added later) matches physical stock.
+                    </p>
+</div>
+</form>
+</div>
+<!-- Drawer Footer (Actions) -->
+<div class="p-lg border-t border-outline-variant bg-surface flex justify-end gap-md shrink-0">
+<button class="bg-secondary-container hover:bg-secondary-fixed-dim text-on-secondary-container font-label-md text-label-md px-md py-2 rounded-lg transition-colors duration-150 border border-transparent flex items-center justify-center" type="button">
+                Cancel
+            </button>
+<!-- Button with Loading State Mockup -->
+<button class="bg-primary-container hover:bg-[#52a668] text-on-primary-container font-label-md text-label-md px-md py-2 rounded-lg transition-colors duration-150 shadow-ambient flex items-center justify-center gap-2 cursor-wait opacity-90 relative overflow-hidden" type="button">
+<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span>
+                Saving...
+                <!-- Subtle overlay to indicate processing -->
+<div class="absolute inset-0 bg-white/10"></div>
+</button>
+</div>
+</aside>
+</body></html>
+
+<!-- Add New Car Drawer -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Car Details View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed-variant": "#005226",
+                      "on-surface": "#121c2a",
+                      "surface-container-highest": "#d9e3f6",
+                      "outline-variant": "#bfc9bd",
+                      "on-secondary-container": "#55695c",
+                      "on-tertiary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "surface-container-high": "#dee9fc",
+                      "on-tertiary-fixed-variant": "#125129",
+                      "on-primary-fixed": "#00210c",
+                      "background": "#f8f9ff",
+                      "on-secondary-fixed-variant": "#384b3f",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#eff4ff",
+                      "surface-tint": "#116d37",
+                      "surface-bright": "#f8f9ff",
+                      "inverse-primary": "#84d998",
+                      "on-secondary": "#ffffff",
+                      "surface-variant": "#d9e3f6",
+                      "secondary-fixed": "#d2e8d8",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#65b87a",
+                      "on-primary-container": "#004620",
+                      "on-background": "#121c2a",
+                      "surface": "#f8f9ff",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed-dim": "#b6ccbd",
+                      "surface-container": "#e6eeff",
+                      "inverse-surface": "#27313f",
+                      "surface-dim": "#d0dbed",
+                      "on-surface-variant": "#3f4940",
+                      "on-tertiary-container": "#014720",
+                      "on-tertiary-fixed": "#00210b",
+                      "primary": "#116d37",
+                      "on-error": "#ffffff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "secondary": "#4f6357",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed": "#0d1f16",
+                      "tertiary-fixed": "#b1f2bb",
+                      "tertiary": "#2e6a3f",
+                      "primary-fixed": "#a0f6b2",
+                      "primary-fixed-dim": "#84d998",
+                      "tertiary-fixed-dim": "#96d5a1",
+                      "secondary-container": "#d2e8d8",
+                      "outline": "#6f7a6f",
+                      "tertiary-container": "#77b583"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xxl": "48px",
+                      "container-max": "1440px",
+                      "xl": "32px",
+                      "base": "4px",
+                      "margin-desktop": "32px",
+                      "gutter": "24px",
+                      "md": "16px",
+                      "xs": "4px",
+                      "margin-mobile": "16px",
+                      "lg": "24px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Geist"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Geist"],
+                      "headline-sm": ["Geist"],
+                      "display": ["Geist"],
+                      "headline-lg": ["Geist"],
+                      "headline-md": ["Geist"],
+                      "body-md": ["Inter"],
+                      "headline-lg-mobile": ["Geist"],
+                      "body-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                      "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                      "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                      "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                      "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                      "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                      "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                      "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                      "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                      "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex items-center justify-center p-margin-mobile md:p-margin-desktop">
+<!-- Modal Overlay -->
+<div class="fixed inset-0 bg-inverse-surface/40 backdrop-blur-sm z-40 flex items-center justify-center">
+<!-- Detail Card -->
+<div class="bg-surface-container-lowest w-full max-w-2xl rounded-xl border border-outline-variant shadow-[0px_10px_15px_-3px_rgba(31,41,55,0.08)] z-50 flex flex-col overflow-hidden">
+<!-- Header Image Area -->
+<div class="relative w-full h-64 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="A high-resolution, wide-angle shot of a sleek silver Porsche 911 GT3 parked in a brightly lit, modern white studio. The lighting is soft and diffused, highlighting the aerodynamic curves and premium finish of the sports car. The overall aesthetic is clean, professional, and consistent with a high-end corporate inventory system, utilizing a palette of silver, white, and subtle green accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHgwX0-zaAzfTrRlBylnMnXGmB96zlVVpNPBiQzm5FZYC1R4bvNW5PT2mbuePLGSxDctpOajYgK9KM4aJmJCM1rlWE33PHYOxPTlJB0nBS6ekj7meI3AeqPRRbF-k8_07GPY147NJZGPO6GXNTK67ZorHW7-Ukbk55_6LSD3UcJDAq_ac4ifrHz_qotW1IixAGUwBKDv2C5CFEYByXUxi6pSB3tOYISHWcNYsPYzsT_9HLytYn-pGNWQ"/>
+<div class="absolute top-md right-md">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-primary-container/10 text-primary-container font-label-md text-label-md">
+                        In Stock
+                    </span>
+</div>
+<button class="absolute top-md left-md w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-lowest/80 text-on-surface hover:bg-surface-container-lowest transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Content Area -->
+<div class="p-lg flex flex-col gap-lg">
+<!-- Title & Basic Info -->
+<div class="flex flex-col gap-sm border-b border-outline-variant pb-md">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">directions_car</span>
+<span>Sports Coupe</span>
+<span class="text-outline mx-1">•</span>
+<span>VIN: WP0AA2999LS123456</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface m-0">Porsche 911 GT3</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant m-0">$162,450</p>
+</div>
+<!-- Specs Grid -->
+<div class="grid grid-cols-2 gap-x-gutter gap-y-md">
+<!-- Spec Item 1 -->
+<div class="flex flex-col gap-xs p-md bg-surface-container-low rounded-lg">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Year</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">2023</span>
+</div>
+<!-- Spec Item 2 -->
+<div class="flex flex-col gap-xs p-md bg-surface-container-low rounded-lg">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Color</span>
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 rounded-full bg-gray-300 border border-outline-variant shadow-sm"></div>
+<span class="font-headline-sm text-headline-sm text-on-surface">GT Silver</span>
+</div>
+</div>
+<!-- Spec Item 3 -->
+<div class="flex flex-col gap-xs p-md bg-surface-container-low rounded-lg">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Horsepower</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">510 HP</span>
+</div>
+<!-- Spec Item 4 -->
+<div class="flex flex-col gap-xs p-md bg-surface-container-low rounded-lg">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Door Count</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">2 Doors</span>
+</div>
+</div>
+<!-- Additional Notes (Optional/Context) -->
+<div class="flex flex-col gap-sm pt-md border-t border-outline-variant">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Location</span>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                        Downtown Branch - Showroom Floor A
+                    </div>
+</div>
+<!-- Actions Footer -->
+<div class="flex justify-end gap-md pt-lg mt-sm border-t border-outline-variant">
+<button class="px-md py-sm rounded-lg font-label-md text-label-md text-error bg-error-container hover:bg-error-container/80 transition-colors duration-150 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+                        Delete
+                    </button>
+<button class="px-md py-sm rounded-lg font-label-md text-label-md text-on-primary-fixed-variant bg-secondary-fixed hover:bg-secondary-fixed-dim transition-colors duration-150 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                        Edit
+                    </button>
+<button class="px-md py-sm rounded-lg font-label-md text-label-md text-on-primary bg-primary hover:bg-surface-tint transition-colors duration-150 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">print</span>
+                        Print Label
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</body></html>
