@@ -23,6 +23,7 @@ namespace Infrastructure.Extensions
                 options.UseNpgsql(connectionString));
 
             services.AddScoped<ICarRepository, CarRepository>();
+            services.AddScoped<IAuditLogRepository, AuditLogRepository>();
             services.AddScoped<ICarService, CarService>();
 
             return services;

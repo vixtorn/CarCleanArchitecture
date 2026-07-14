@@ -1,4 +1,5 @@
 using API.Extensions;
+using API.Middleware;
 using Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -41,6 +42,8 @@ app.UseCors("FrontendPolicy");
 
 // Önce JWT okunur ve HttpContext.User oluşturulur.
 app.UseAuthentication();
+
+app.UseMiddleware<AuditLogMiddleware>();
 
 // Ardından kullanıcının endpoint'e erişim izni kontrol edilir.
 app.UseAuthorization();
