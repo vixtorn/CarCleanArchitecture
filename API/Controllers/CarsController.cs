@@ -1,6 +1,8 @@
 ﻿using Application.DTO;
 using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using API.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
@@ -15,6 +17,7 @@ namespace API.Controllers
             _carService = carService;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAllAsync(
             [FromQuery] CarQueryParameters query)
@@ -24,6 +27,7 @@ namespace API.Controllers
             return Ok(cars);
         }
 
+        [AllowAnonymous]
         [HttpGet("{id:guid}", Name = "GetCarById")]
         public async Task<IActionResult> GetByIdAsync(Guid id)
         {
@@ -37,6 +41,8 @@ namespace API.Controllers
             return Ok(car);
         }
 
+        [Authorize(
+            Policy = SupabaseAuthenticationExtensions.AdminOnlyPolicy)]
         [HttpPost]
         public async Task<IActionResult> CreateAsync(
             [FromBody] CreateCarDto dto)
@@ -49,6 +55,8 @@ namespace API.Controllers
                 car);
         }
 
+        [Authorize(
+            Policy = SupabaseAuthenticationExtensions.AdminOnlyPolicy)]
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> UpdateAsync(
             Guid id,
@@ -64,6 +72,8 @@ namespace API.Controllers
             return Ok(car);
         }
 
+        [Authorize(
+            Policy = SupabaseAuthenticationExtensions.AdminOnlyPolicy)]
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {

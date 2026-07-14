@@ -1,12 +1,15 @@
+using API.Extensions;
 using Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
+// DbContext, repository ve service DI kayıtları.
 builder.Services.AddInfrastructure(builder.Configuration);
-// ServiceCollectionExtension içindeki AddInfrastructure metodunu çağırır.
-// DbContext, repository ve service DI kayıtları burada yapılır.
+
+// Supabase JWT authentication ve AdminOnly policy kayıtları.
+builder.Services.AddSupabaseAuthentication(builder.Configuration);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -36,6 +39,10 @@ app.UseRouting();
 
 app.UseCors("FrontendPolicy");
 
+// Önce JWT okunur ve HttpContext.User oluşturulur.
+app.UseAuthentication();
+
+// Ardından kullanıcının endpoint'e erişim izni kontrol edilir.
 app.UseAuthorization();
 
 app.MapControllers();
