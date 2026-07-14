@@ -10,5 +10,7 @@
         public int Year { get; set; }
         public int Horsepower { get; set; }
         public int DoorCount { get; set; }
+
+        public string? ImagePath { get; set; } // Optional property for the image path
     }
 }
