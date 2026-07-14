@@ -117,13 +117,6 @@ export default function LoginModal({
           ×
         </button>
 
-        <div
-          className="login-modal-icon"
-          aria-hidden="true"
-        >
-          🚘
-        </div>
-
         <h2 id="login-modal-title">
           Admin Login
         </h2>
