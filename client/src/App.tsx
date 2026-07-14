@@ -5,7 +5,7 @@ import {
 } from "react";
 import "./App.css";
 
-import { useAuth } from "./auth/AuthContext";
+import { useAuth } from "./auth/useAuth";
 
 import CarDetails from "./components/CarDetails";
 import CarFilterForm from "./components/CarFilterForm";

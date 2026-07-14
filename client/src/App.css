@@ -125,11 +125,42 @@ dialog::backdrop { background: rgba(30, 41, 34, .44); backdrop-filter: blur(2px)
 .confirmation-card h2 { margin-bottom: 8px; font-size: 22px; }
 .confirmation-card p { margin: 0; color: var(--text-secondary); line-height: 1.55; }
 .confirmation-card .modal-actions { justify-content: center; }
-.notification { width: min(420px, calc(100% - 32px)); padding: 13px 12px; position: fixed; right: 20px; bottom: 20px; z-index: 50; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-md); }
-.notification p { margin: 0; font-size: 14px; }
+.notification-layer {
+  position: fixed;
+  inset: auto 20px 20px auto;
+  z-index: 2147483647;
+  width: min(420px, calc(100vw - 32px));
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  pointer-events: none;
+  isolation: isolate;
+}
+.notification {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 12px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 18px 48px rgba(31, 41, 55, .24);
+  pointer-events: auto;
+}
+.notification p { margin: 0; overflow-wrap: anywhere; font-size: 14px; }
 .notification-icon { width: 34px; height: 34px; display: grid; place-items: center; color: var(--primary-dark); background: var(--primary-soft); border-radius: 50%; }
 .notification-error .notification-icon { color: var(--danger); background: var(--danger-soft); }
 .notification button { width: 34px; height: 34px; padding: 0; display: grid; place-items: center; color: var(--text-secondary); background: transparent; border: 0; border-radius: 7px; }
+.notification button:hover { color: var(--text-primary); background: var(--surface-muted); }
+.notification button:focus-visible { outline: 3px solid rgba(92,174,115,.28); outline-offset: 2px; }
 
 @media (max-width: 1100px) {
   .filter-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
@@ -178,7 +209,7 @@ dialog::backdrop { background: rgba(30, 41, 34, .44); backdrop-filter: blur(2px)
   .spec-grid dd { font-size: 16px; }
   .modal-actions { flex-wrap: wrap; }
   .modal-actions .button { flex: 1; }
-  .notification { right: 16px; bottom: 16px; }
+  .notification-layer { inset: auto 16px 16px 16px; width: auto; }
 }
 @media (max-width: 430px) {
   .brand-icon { display: none; }
