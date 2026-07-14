@@ -37,6 +37,10 @@ namespace Infrastructure.Persistence
             modelBuilder.Entity<Car>()
                 .Property(c => c.Color)
                 .HasMaxLength(50);
+
+            modelBuilder.Entity<Car>()
+                .Property(c => c.ImagePath)
+                .HasMaxLength(255); // Optional property for the image path
         }
     }
 }
