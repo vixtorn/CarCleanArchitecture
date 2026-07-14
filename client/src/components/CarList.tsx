@@ -34,12 +34,17 @@ export default function CarList(props: CarListProps) {
     <section className="inventory-section" aria-labelledby="results-heading">
       <p className="results-count" id="results-heading"><strong>{cars.length}</strong> {cars.length === 1 ? "car" : "cars"} found</p>
       <div className="table-shell">
-        <table><thead><tr><th>Vehicle</th><th>Brand</th><th>Model</th><th>Color</th><th>Year</th><th>Horsepower</th><th>Doors</th><th className="actions-heading">Actions</th></tr></thead>
-          <tbody>{cars.map((car) => <tr key={car.id}>
-            <td><img className="vehicle-thumbnail" src={carPlaceholder} alt={`${car.brand} ${car.model} vehicle placeholder`} /></td>
-            <td className="cell-strong">{car.brand}</td><td>{car.model}</td><td><span className="color-badge">{car.color}</span></td><td>{car.year}</td><td><span className="hp-badge">{car.horsepower} HP</span></td><td>{car.doorCount}</td>
-            <td><Actions car={car} onView={onView} onEdit={onEdit} onDelete={onDelete} /></td>
-          </tr>)}</tbody>
+        <table>
+          <thead>
+            <tr><th>Vehicle</th><th>Brand</th><th>Model</th><th>Color</th><th>Year</th><th>Horsepower</th><th>Doors</th><th className="actions-heading">Actions</th></tr>
+          </thead>
+          <tbody>
+            {cars.map((car) => <tr key={car.id}>
+              <td><img className="vehicle-thumbnail" src={carPlaceholder} alt={`${car.brand} ${car.model} vehicle placeholder`} /></td>
+              <td className="cell-strong">{car.brand}</td><td>{car.model}</td><td><span className="color-badge">{car.color}</span></td><td>{car.year}</td><td><span className="hp-badge">{car.horsepower} HP</span></td><td>{car.doorCount}</td>
+              <td><Actions car={car} onView={onView} onEdit={onEdit} onDelete={onDelete} /></td>
+            </tr>)}
+          </tbody>
         </table>
       </div>
       <div className="mobile-car-list">{cars.map((car) => <article className="car-card" key={car.id}>
